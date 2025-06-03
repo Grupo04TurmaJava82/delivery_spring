@@ -13,8 +13,8 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 	
 	//public List<Produto> findAllByCategoriaContainingIgnoreCase(String categoria);
 	
-	public List<Produto> findAllByCaloriasGreaterThan(BigDecimal calorias); //Calorias maior que
-	public List<Produto> findAllByCaloriasLessThan(BigDecimal calorias); //Calorias menor que
+	public List<Produto> findAllByCaloriasGreaterThan(Integer calorias); //Calorias maior que
+	public List<Produto> findAllByCaloriasLessThan(Integer calorias); //Calorias menor que
 	
 	public List<Produto> findAllByPrecoGreaterThan(BigDecimal preco);
 	public List<Produto> findAllByPrecoLessThan(BigDecimal preco);

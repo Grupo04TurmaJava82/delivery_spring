@@ -1,5 +1,6 @@
 package com.generation.delivery.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -71,5 +73,44 @@ public class ProdutoController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		
 		produtoRepository.deleteById(id);
+	}
+	
+	// Métodos específicos
+	
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome){
+		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
+	}
+	
+	/*
+	@GetMapping("/categoria/{categoria}")
+	public ResponseEntity<List<Produto>> getByCategoria(@PathVariable String categoria){
+		return ResponseEntity.ok(produtoRepository.findAllByCategoriaContainingIgnoreCase(categoria));
+	}
+	*/
+	
+	@GetMapping("/nutriscore")
+	public ResponseEntity<List<Produto>> getByNutriscore(@RequestParam Integer nsMinimo, @RequestParam Integer nsMaximo) {
+	    return ResponseEntity.ok(produtoRepository.findAllByNutriscoreBetween(nsMinimo, nsMaximo));
+	}
+	
+	@GetMapping("/caloriasMaioresQue/{calorias}")
+	public ResponseEntity<List<Produto>> getByCaloriasGreaterThan(@PathVariable Integer calorias) {
+	    return ResponseEntity.ok(produtoRepository.findAllByCaloriasGreaterThan(calorias));
+	}
+
+	@GetMapping("/caloriasMenoresQue/{calorias}")
+	public ResponseEntity<List<Produto>> getByCaloriasLessThan(@PathVariable Integer calorias) {
+	    return ResponseEntity.ok(produtoRepository.findAllByCaloriasLessThan(calorias));
+	}
+	
+	@GetMapping("/precoMaiorQue/{preco}")
+	public ResponseEntity<List<Produto>> getByPrecoGreaterThan(@PathVariable BigDecimal preco) {
+	    return ResponseEntity.ok(produtoRepository.findAllByPrecoGreaterThan(preco));
+	}
+
+	@GetMapping("/precoMenorQue/{preco}")
+	public ResponseEntity<List<Produto>> getByPrecoLessThan(@PathVariable BigDecimal preco) {
+	    return ResponseEntity.ok(produtoRepository.findAllByPrecoLessThan(preco));
 	}
 }
