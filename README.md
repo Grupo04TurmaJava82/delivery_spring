@@ -62,10 +62,10 @@ classDiagram
         +Bigint ID
         +String Nome
         +String Descricao
-        +double Preco
+        +BigDecimal Preco
         +String Foto
-        +double Calorias
-        +char Nutriscore
+        +Integer Calorias
+        +Integer Nutriscore
         +BuscarPorNome(nome)
         +BuscarPorNutriscore(nutriscore)
         +BuscarPorCategoria(categoriaID)
