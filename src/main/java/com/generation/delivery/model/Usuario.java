@@ -35,8 +35,17 @@ public class Usuario {
 
     private String telefone;
 
+    private int tipo;
+    
+    public int getTipo() {
+		return tipo;
+	}
 
-    // Getters e Setters
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+	// Getters e Setters
     public Long getId() {
         return id;
     }
