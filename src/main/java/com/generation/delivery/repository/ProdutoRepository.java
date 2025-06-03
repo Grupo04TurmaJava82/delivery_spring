@@ -1,0 +1,24 @@
+package com.generation.delivery.repository;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.generation.delivery.model.Produto;
+
+public interface ProdutoRepository extends JpaRepository<Produto, Long>{
+	
+	public List<Produto> findAllByNomeContainingIgnoreCase(String nome);
+	
+	//public List<Produto> findAllByCategoriaContainingIgnoreCase(String categoria);
+	
+	public List<Produto> findAllByCaloriasGreaterThan(BigDecimal calorias); //Calorias maior que
+	public List<Produto> findAllByCaloriasLessThan(BigDecimal calorias); //Calorias menor que
+	
+	public List<Produto> findAllByPrecoGreaterThan(BigDecimal preco);
+	public List<Produto> findAllByPrecoLessThan(BigDecimal preco);
+	
+	//Retorna produtos em um intervalo de Nutriscore
+	public List<Produto> findAllByNutriscoreBetween(Integer nsMinimo, Integer nsMaximo);
+}
