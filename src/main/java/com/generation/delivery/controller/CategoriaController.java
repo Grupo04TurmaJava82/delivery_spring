@@ -30,6 +30,10 @@ public class CategoriaController {
 	
 	private CategoriaRepository  categoriaRepository;
 	
+    public CategoriaController(CategoriaRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
+    }
+	
 	@GetMapping
 	public ResponseEntity<List<Categoria>> getAll(){
 		List<Categoria> categorias = categoriaRepository.findAll();
