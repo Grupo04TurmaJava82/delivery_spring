@@ -16,21 +16,21 @@ import io.swagger.v3.oas.models.responses.ApiResponses;
 public class SwaggerConfig {
 
 	@Bean
-    OpenAPI springDelivryOpenAPI() {
+    OpenAPI springDeliveryOpenAPI() {
         return new OpenAPI()
-            .info(new Info()
-                .title("Delivery")
-                .description("Delivery Grupo 4")
-                .version("v0.0.1")
-                .license(new License()
-                    .name("Grupo 4 - Java 82")
-                    .url("https://github.com/Grupo04TurmaJava82"))
-                .contact(new Contact()
-                    .name("Grupo 4 - Java82")
-                    .url("https://linktr.ee/grupo4tjava82")))
-            .externalDocs(new ExternalDocumentation()
-                .description("Github")
-                .url("https://github.com/Grupo04TurmaJava82/delivery_spring"));
+                .info(new Info()
+                    .title("Delivery")
+                    .description("Delivery Grupo 4")
+                    .version("v0.0.1")
+                    .license(new License()
+                        .name("Grupo 4 - Java 82")
+                        .url("https://github.com/Grupo04TurmaJava82"))
+                    .contact(new Contact()
+                        .name("Grupo 4 - Java82")
+                        .url("https://linktr.ee/grupo4tjava82")))
+                .externalDocs(new ExternalDocumentation()
+                    .description("Github")
+                    .url("https://github.com/Grupo04TurmaJava82/delivery_spring"));
     }
 
 
