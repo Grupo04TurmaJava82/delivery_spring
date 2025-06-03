@@ -44,13 +44,13 @@ public class Produto {
 	@Positive(message = "Erro: Nutriscore deve ser maior do que zero")
 	private Integer nutriscore;
 
-	/*@ManyToOne
-	@JsonIgnoreProperties("produto")
-	private Categoria categoria;*/
+	@ManyToOne
+	@JsonIgnoreProperties("produtos")
+	private Categoria categoria;
 	
-	/*@ManyToOne
-	@JsonIgnoreProperties("usuario")
-	private Usuario usuario;*/
+	@ManyToOne
+	@JsonIgnoreProperties("produtos")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -108,20 +108,20 @@ public class Produto {
 		this.nutriscore = nutriscore;
 	}
 	
-	/*public Categoria getCategoria() {
+	public Categoria getCategoria() {
 	return categoria;
 	}
 	
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}*/
+	}
 	
 }

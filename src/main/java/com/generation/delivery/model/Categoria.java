@@ -1,9 +1,16 @@
 package com.generation.delivery.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -23,11 +30,11 @@ public class Categoria {
     @Size(max = 500, message = "A descrição da categoria deve conter no máximo 500 caracteres")
     private String descricao;
     
-    /*
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "categoria", cascade = CascadeType.ALL)
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("categoria")
     private List<Produto> produtos;
-    */
+ 
    
     public Long getId() {
         return id;
@@ -52,7 +59,7 @@ public class Categoria {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    /*
+    
     public List<Produto> getProdutos() {
         return produtos;
     }
@@ -60,5 +67,5 @@ public class Categoria {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
-    */
+    
 }
