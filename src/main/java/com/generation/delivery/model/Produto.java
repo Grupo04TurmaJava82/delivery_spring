@@ -22,22 +22,26 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(length = 255)
-	@NotNull(message = "Nome é obrigatório!")
+	@Column(length = 50)
+	@NotNull(message = "Erro: Nome é obrigatório")
 	private String nome;
 	
+	@Column(length = 500)
 	private String descricao;
 
-	@NotNull(message = "Preço é obrigatório!")
-	@Positive(message = "O preço deve ser maior do que zero!")
+	@Column(precision=6, scale=2)
+	@NotNull(message = "Erro: Preço é obrigatório")
+	@Positive(message = "Erro: Preço deve ser maior do que zero")
 	private BigDecimal preco;
 
 	@Column(length = 5000)
 	private String foto;
 	
-	private BigDecimal calorias;
+	@Positive(message = "Erro: Calorias deve ser maior do que zero")
+	private Integer calorias;
 	
-	@NotNull(message = "Nutriscore é obrigatório!")
+	@NotNull(message = "Erro: Nutriscore é obrigatório")
+	@Positive(message = "Erro: Nutriscore deve ser maior do que zero")
 	private Integer nutriscore;
 
 	/*@ManyToOne
@@ -88,11 +92,11 @@ public class Produto {
 		this.foto = foto;
 	}
 	
-	public BigDecimal getCalorias() {
-		return calorias;
+	public Integer getCalorias() {
+		return this.calorias;
 	}
 
-	public void setCalorias(BigDecimal calorias) {
+	public void setCalorias(Integer calorias) {
 		this.calorias = calorias;
 	}
 
