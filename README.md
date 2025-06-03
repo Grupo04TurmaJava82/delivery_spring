@@ -59,10 +59,10 @@ classDiagram
         +BuscarPorNome(nome)
     }
     class Produto {
-        +Long ID
+        +Bigint ID
         +String Nome
         +String Descricao
-        +BigDecimal Preco
+        +decimal Preco
         +String Foto
         +Integer Calorias
         +Integer Nutriscore
@@ -74,6 +74,7 @@ classDiagram
         +PrecoMenorQue(valor)
         +PrecoMaiorQue(valor)
     }
+
     class Usuario {
         +Long ID
         +String Nome
@@ -105,11 +106,12 @@ erDiagram
         varchar Descricao
         decimal Preco
         varchar Foto
-        int Calorias
-        int Nutriscore
+        integer Calorias
+        integer Nutriscore
         bigint CategoriaID FK
         bigint UsuarioID FK
     }
+
     USUARIO {
         bigint ID PK
         varchar Nome
