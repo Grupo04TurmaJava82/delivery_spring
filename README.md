@@ -53,13 +53,13 @@ Preparada para receber funcionalidades como autenticação, reservas e avaliaç�
 ```mermaid
 classDiagram
     class Categoria {
-        +Bigint ID
+        +Long ID
         +String Nome
         +String Descricao
         +BuscarPorNome(nome)
     }
     class Produto {
-        +Bigint ID
+        +Long ID
         +String Nome
         +String Descricao
         +BigDecimal Preco
@@ -75,7 +75,7 @@ classDiagram
         +PrecoMaiorQue(valor)
     }
     class Usuario {
-        +Bigint ID
+        +Long ID
         +String Nome
         +String Usuario
         +String Telefone
@@ -103,10 +103,10 @@ erDiagram
         bigint ID PK
         varchar Nome
         varchar Descricao
-        double Preco
+        decimal Preco
         varchar Foto
-        double Calorias
-        char Nutriscore
+        int Calorias
+        int Nutriscore
         bigint CategoriaID FK
         bigint UsuarioID FK
     }
