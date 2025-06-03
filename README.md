@@ -131,59 +131,46 @@ erDiagram
 
 A API fornece os seguintes endpoints:
 
-**GET EXERCICIOS**
+**GET CATEGORIA**
 
 ```markdown
-GET /exercicio - Recuperar uma lista de todos exercicios.
+GET / categoria - Recuperar uma lista de todas as categorias.
 ```
 
 ```json
 [
-  {
-    "id": 1,
-    "nome": "Treino Ombro",
-    "carga": 20,
-    "repeticoes": 12,
-    "series": 3
-  },
-  {
-    "id": 3,
-    "nome": "Treino teste",
-    "carga": 20,
-    "repeticoes": 15,
-    "series": 3
-  }
+{
+	"id": 1,
+	"nome": "Categoria de Teste",
+	"descricao": "Categoria dedicada testes."
+}
 ]
 ```
 
-**POST EXERCICIOS**
+**POST CATEGORIAS**
 
 ```markdown
-POST /exercicio - Registra um novo exercício no aplicativo
+POST /categoria - Registra uma nova categoria no aplicativo
 ```
 
 ```json
 {
-  "nome": "Treino Braço e perna",
-  "carga": 20,
-  "repeticoes": 12,
-  "series": 3
+	"nome": "Categoria de Teste",
+	"descricao": "Categoria dedicada testes."
 }
 ```
 
-**UPDATE EXERCICIOS**
+**UPDATE CATEGORIAS**
 
 ```markdown
-PUT /exercicio - Atualiza um exercicio existente
+PUT /categoria - Atualiza uma categoria existente
 ```
 
 ```json
 {
-  "id": 32,
-  "nome": "Treino teste",
-  "carga": 20,
-  "repeticoes": 15,
-  "series": 3
+  "id": 1,
+  "nome": "Categoria de Teste 1",
+  "descricao": "Atualização categoria dedicada testes."
 }
 ```
 
@@ -193,7 +180,7 @@ PUT /exercicio - Atualiza um exercicio existente
 
 | Item                          | Descrição        |
 | ----------------------------- | ---------------- |
-| **Servidor**                  | Tomcat           |
+| **Servidor**                  | Render           |
 | **Linguagem de programação**  | Java             |
 | **Framework**                 | Spring Framework |
 | **ORM**                       | Hibernate        |
