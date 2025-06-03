@@ -1,6 +1,7 @@
 package com.generation.delivery.controller;
 
 import com.generation.delivery.model.Usuario;
+import com.generation.delivery.model.UsuarioLogin;
 import com.generation.delivery.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -48,12 +50,12 @@ public class UsuarioController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-//    @PostMapping("/logar")
-//    public ResponseEntity<UsuarioLogin> logar (@Valid @RequestBody Optional<UsuarioLogin> usuarioLogin) {
-//        return usuarioService.autenticarUsuario(usuarioLogin)
-//                .map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
-//                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+    @PostMapping("/logar")
+    public ResponseEntity<UsuarioLogin> logar (@Valid @RequestBody Optional<UsuarioLogin> usuarioLogin) {
+      return usuarioService.autenticarUsuario(usuarioLogin)
+                .map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
+                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 
-//    }
+    }
 
 }

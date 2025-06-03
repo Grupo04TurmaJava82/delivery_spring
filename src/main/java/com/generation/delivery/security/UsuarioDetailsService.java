@@ -1,4 +1,4 @@
-package com.generation.delivery.service;
+package com.generation.delivery.security;
 
 import com.generation.delivery.model.Usuario;
 import com.generation.delivery.repository.UsuarioRepository;
