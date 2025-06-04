@@ -1,50 +1,57 @@
 <div align="center">
 
-# DeliveyBro - Backend
+# GetFood - Backend
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
-![SQL](https://img.shields.io/badge/sql-%234479A1.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/postgresql-%234479A1.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Insomnia](https://img.shields.io/badge/insomnia-%234000BF.svg?style=for-the-badge&logo=insomnia&logoColor=white)
 ![Hibernate](https://img.shields.io/badge/hibernate-%2359666C.svg?style=for-the-badge&logo=hibernate&logoColor=white)
+![Render](https://img.shields.io/badge/render-%23000000.svg?style=for-the-badge&logo=render&logoColor=white)
+![Neon](https://img.shields.io/badge/neon-%2300FFFF.svg?style=for-the-badge&logo=neon&logoColor=black)
+
 
 </div>
 <br />
 
 <div align="center">
-   <img src="" title="source: imgur.com" /> 
+   <img src="https://ik.imagekit.io/eduardotosta/delivery_spring/Instagram_post_para_delivery_elegante_branco.jpg_ex=6841b001&is=68405e81&hm=ac1916c507e685711e0589a22a30c299b741aa58ed917556dcacc8ace5a52b59&?updatedAt=1749048995287" title="source: imgur.com" /> 
 </div>
 
 ---
 
-## Descrição
+## 🍽️ Descrição
 
-RideBro é uma API REST em Java com Spring Boot focada no gerenciamento de caronas, permitindo o cadastro de usuários, veículos e viagens.
+**GetFood** é uma API REST desenvolvida em Java com Spring Boot, voltada para o gerenciamento de pedidos em um sistema de delivery. Ela permite o cadastro de restaurantes, produtos e usuários, além de gerenciar pedidos e entregas de forma eficiente.
 
 ---
 
-## Sobre esta API
+## 📦 Sobre esta API
 
-O RideBro é o núcleo de um sistema de gerenciamento de caronas. Desenvolvida com Java e Spring Boot, ela tem como objetivo facilitar a organização de viagens compartilhadas entre usuários, permitindo o cadastro de veículos, controle de usuários e gerenciamento de caronas. A arquitetura modular da API permite fácil manutenção e expansão.
+O **GetFood** serve como o núcleo de um sistema de gerenciamento de delivery. Desenvolvida com Java, Spring Boot e arquitetura RESTful, a API tem como foco facilitar o fluxo de pedidos online entre clientes, restaurantes e entregadores. Sua estrutura modular garante fácil manutenção e escalabilidade para novas funcionalidades.
 
-Principais Funcionalidades
-🚗 Cadastro e gerenciamento de veículos
-Permite criar, editar, listar e excluir veículos utilizados nas caronas.
+### Principais Funcionalidades
 
-🧭 Gerenciamento de viagens
-Os usuários podem cadastrar, consultar e organizar caronas com origem, destino e horários definidos.
+🍔 **Cadastro e gerenciamento de produtos**  
+Restaurantes podem adicionar, editar, listar e excluir itens do cardápio.
 
-👥 Controle de usuários
-Cada carona pode ser associada a um usuário motorista ou passageiro (quando implementado).
+🏪 **Gerenciamento de restaurantes**  
+Cadastro de restaurantes com informações básicas, horários de funcionamento e cardápio.
 
-🔗 API RESTful com arquitetura MVC
-Estrutura organizada em camadas (Model, Controller, Service e Repository) seguindo boas práticas.
+🛒 **Pedidos e entregas**  
+Usuários podem realizar pedidos, acompanhar o status e consultar o histórico.
 
-📄 Documentação com Swagger
-Endpoints documentados para facilitar testes e integração com outras aplicações.
+👤 **Controle de usuários**  
+Gerenciamento de clientes e administradores com autenticação integrada.
 
-🔧 Base para futuras expansões
-Preparada para receber funcionalidades como autenticação, reservas e avaliações de usuários.
+🔗 **API RESTful com arquitetura MVC**  
+Organizada em camadas (Model, Controller, Service e Repository), seguindo boas práticas de desenvolvimento.
+
+📄 **Documentação com Swagger**  
+Todos os endpoints estão documentados para facilitar testes e integração com sistemas externos.
+
+🔧 **Base para futuras expansões**  
+Preparada para futuras funcionalidades como avaliações, promoções, pagamentos e suporte a múltiplas formas de entrega.
 
 ---
 
@@ -131,6 +138,8 @@ erDiagram
 
 A API fornece os seguintes endpoints:
 
+**CATEGORIA:**
+
 **GET CATEGORIA**
 
 ```markdown
@@ -178,25 +187,35 @@ PUT /categoria - Atualiza uma categoria existente
 
 ## Tecnologias utilizadas
 
-| Item                          | Descrição        |
-| ----------------------------- | ---------------- |
-| **Servidor**                  | Render           |
-| **Linguagem de programação**  | Java             |
-| **Framework**                 | Spring Framework |
-| **ORM**                       | Hibernate        |
-| **Banco de dados Relacional** | MySQL            |
+| Item                         | Descrição        |
+|------------------------------|------------------|
+| **Servidor**                 | Render           |
+| **Linguagem de programação** | Java             |
+| **Framework**                | Spring Framework |
+| **ORM**                      | Hibernate        |
+| **Banco de dados Relacional**| PostgreSQL       |
+| **Banco na Nuvem**           | Neon             |
+| **Documentação da API**      | Swagger          |
+
 
 ---
 
-## Configuração e Execução
+## 🚀 Acesso à Aplicação
+
+🔗 [Acesse a API em produção](https://delivery-spring-deploy.onrender.com/)
+
+- **Email:** `root2@email.com`  
+- **Senha:** `rootroot`
+
+## Como executar localmente:
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/ridebro-spring.git
+   git clone https://github.com/seu-usuario/delivery-spring.git
    ```
 2. Acesse a pasta do projeto:
    ```bash
-   cd ridebro-spring
+   cd delivery-spring
    ```
 3. Configure o banco de dados:
    - Edite o arquivo application.properties ou application.yml na pasta src/main/resources
