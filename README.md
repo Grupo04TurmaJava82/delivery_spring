@@ -7,6 +7,7 @@
 ![PostgreSQL](https://img.shields.io/badge/postgresql-%234479A1.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Insomnia](https://img.shields.io/badge/insomnia-%234000BF.svg?style=for-the-badge&logo=insomnia&logoColor=white)
 ![Hibernate](https://img.shields.io/badge/hibernate-%2359666C.svg?style=for-the-badge&logo=hibernate&logoColor=white)
+[![Swagger](https://img.shields.io/badge/Swagger-API-blue.svg)](https://swagger.io/)
 ![Render](https://img.shields.io/badge/render-%23000000.svg?style=for-the-badge&logo=render&logoColor=white)
 ![Neon](https://img.shields.io/badge/neon-%2300FFFF.svg?style=for-the-badge&logo=neon&logoColor=black)
 
@@ -134,11 +135,7 @@ erDiagram
 
 ---
 
-## API Endpoints
-
-A API fornece os seguintes endpoints:
-
-**CATEGORIA:**
+## Exemplo de Endpoints
 
 **GET CATEGORIA**
 
