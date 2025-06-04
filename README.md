@@ -199,9 +199,9 @@ PUT /categoria - Atualiza uma categoria existente
 
 ## 🚀 Acesso à Aplicação
 
-🔗 [Acesse a API em produção](https://delivery-spring-deploy.onrender.com/)
+🔗 [Acesse a API em produção](https://delivery-spring.onrender.com/)
 
-- **Email:** `root2@email.com`  
+- **Email:** `root@email.com`  
 - **Senha:** `rootroot`
 
 ## Como executar localmente:
