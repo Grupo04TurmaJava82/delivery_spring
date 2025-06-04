@@ -16,7 +16,7 @@
 <br />
 
 <div align="center">
-   <img src="https://ik.imagekit.io/eduardotosta/delivery_spring/Instagram_post_para_delivery_elegante_branco.jpg_ex=6841b001&is=68405e81&hm=ac1916c507e685711e0589a22a30c299b741aa58ed917556dcacc8ace5a52b59&?updatedAt=1749048995287" title="source: imgur.com" /> 
+   <img src="https://ik.imagekit.io/eduardotosta/delivery_spring/logo_laranja.jpg_ex=6841d7ac&is=6840862c&hm=fe55fe3707e10ef10a96dd89add1da6b23ed3fa306aa03ac8a649a94ed7f96e7&?updatedAt=1749059146131" title="source: imgur.com" /> 
 </div>
 
 ---
