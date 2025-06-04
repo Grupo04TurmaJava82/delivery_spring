@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.generation.delivery.model.Produto;
+import com.generation.delivery.model.Usuario;
 import com.generation.delivery.repository.ProdutoRepository;
+import com.generation.delivery.security.UserDetailsImpl;
+import com.generation.delivery.service.ProdutoService;
+import com.generation.delivery.service.UsuarioService;
 
 import jakarta.validation.Valid;
 
@@ -32,6 +38,12 @@ public class ProdutoController {
 	
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
+	@Autowired
+	private UsuarioService usuarioService;
+	
+	@Autowired
+	private ProdutoService produtoService;
 	
 	@GetMapping
 	public ResponseEntity<List<Produto>> getAll(){
@@ -48,7 +60,18 @@ public class ProdutoController {
 	
 	@PostMapping
 	public ResponseEntity<Produto> post(@Valid @RequestBody Produto produto){
-			return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
+		try {
+			Produto novoProduto = produtoService.cadastrarProdutoComNutriscore(produto);
+			
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	        UserDetailsImpl principal = (UserDetailsImpl) authentication.getPrincipal();
+	        Usuario usuarioLogado = usuarioService.getById(principal.getId()).get();
+	        novoProduto.setUsuario(usuarioLogado);
+	        
+			return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(novoProduto));
+		} catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        }
 	}
 	
 	@PutMapping
@@ -82,12 +105,10 @@ public class ProdutoController {
 		return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
 	}
 	
-	/*
-	@GetMapping("/categoria/{categoria}")
-	public ResponseEntity<List<Produto>> getByCategoria(@PathVariable String categoria){
-		return ResponseEntity.ok(produtoRepository.findAllByCategoriaContainingIgnoreCase(categoria));
+	@GetMapping("/categoria/{categoriaID}")
+	public ResponseEntity<List<Produto>> getByCategoriaId(@PathVariable Integer categoriaID){
+		return ResponseEntity.ok(produtoRepository.findAllByCategoriaId(categoriaID));
 	}
-	*/
 	
 	@GetMapping("/nutriscore")
 	public ResponseEntity<List<Produto>> getByNutriscore(@RequestParam Integer nsMinimo, @RequestParam Integer nsMaximo) {

@@ -11,7 +11,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 	
 	public List<Produto> findAllByNomeContainingIgnoreCase(String nome);
 	
-	//public List<Produto> findAllByCategoriaContainingIgnoreCase(String categoria);
+	public List<Produto> findAllByCategoriaId(Integer categoria);
 	
 	public List<Produto> findAllByCaloriasGreaterThan(Integer calorias); //Calorias maior que
 	public List<Produto> findAllByCaloriasLessThan(Integer calorias); //Calorias menor que
