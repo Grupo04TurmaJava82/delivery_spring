@@ -85,13 +85,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!-- Dependência específica do projeto -->
-        <dependency>
-            <groupId>com.generation</groupId>
-            <artifactId>blogpessoal</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        
     </dependencies>
 
     <build>
