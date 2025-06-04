@@ -3,7 +3,9 @@ package com.generation.delivery.model;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -35,8 +37,21 @@ public class Usuario {
 
     private String telefone;
 
+    private int tipo;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("usuario")
+    private List<Produto> produtos;
+    
+    public int getTipo() {
+		return tipo;
+	}
 
-    // Getters e Setters
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+	// Getters e Setters
     public Long getId() {
         return id;
     }
@@ -92,4 +107,13 @@ public class Usuario {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+    
 }

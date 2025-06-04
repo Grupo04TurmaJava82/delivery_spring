@@ -1,6 +1,6 @@
 <div align="center">
 
-# DeliveyBro - Backend
+# RideBro - Backend
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
@@ -12,7 +12,7 @@
 <br />
 
 <div align="center">
-   <img src="" title="source: imgur.com" /> 
+   <img src="https://ik.imagekit.io/eduardotosta/carona_spring/image(1).png?updatedAt=1748609018796" title="source: imgur.com" /> 
 </div>
 
 ---
@@ -52,41 +52,35 @@ Preparada para receber funcionalidades como autenticação, reservas e avaliaç�
 
 ```mermaid
 classDiagram
-    class Categoria {
-        +Long ID
-        +String Nome
-        +String Descricao
-        +BuscarPorNome(nome)
-    }
-    class Produto {
-        +Bigint ID
-        +String Nome
-        +String Descricao
-        +decimal Preco
-        +String Foto
-        +Integer Calorias
-        +Integer Nutriscore
-        +BuscarPorNome(nome)
-        +BuscarPorNutriscore(nutriscore)
-        +BuscarPorCategoria(categoriaID)
-        +CaloriasMenorQue(valor)
-        +CaloriasMaiorQue(valor)
-        +PrecoMenorQue(valor)
-        +PrecoMaiorQue(valor)
-    }
-
     class Usuario {
-        +Long ID
-        +String Nome
-        +String Usuario
-        +String Telefone
-        +String Foto
-        +String Senha
-        +BuscarPorUsuario(usuario)
+        +Long id
+        +String nome
+        +String usuario
+        +String senha
+        +String foto
     }
 
-    Categoria "1" -- "0..*" Produto : possui >
-    Usuario "1" -- "0..*" Produto : cadastra >
+    class Veiculo {
+        +Long id
+        +String modelo
+        +String placa
+        +int ano
+        +String cor
+        +BigDecimal velocidadeMedia
+    }
+
+    class Viagem {
+        +Long id
+        +String partida
+        +String destino
+        +BigDecimal distancia
+        +BigDecimal tempoDeViagem
+    }
+
+    Viagem --> Usuario : motorista
+    Viagem --> Usuario : passageiro
+    Viagem --> Veiculo : veiculo
+
 ```
 
 ---
@@ -95,34 +89,35 @@ classDiagram
 
 ```mermaid
 erDiagram
-    CATEGORIA {
-        bigint ID PK
-        varchar Nome
-        varchar Descricao
-    }
-    PRODUTO {
-        bigint ID PK
-        varchar Nome
-        varchar Descricao
-        decimal Preco
-        varchar Foto
-        integer Calorias
-        integer Nutriscore
-        bigint CategoriaID FK
-        bigint UsuarioID FK
-    }
-
     USUARIO {
-        bigint ID PK
-        varchar Nome
-        varchar Usuario
-        varchar Telefone
-        varchar Foto
-        varchar Senha
+        Long id PK "Chave primária"
+        String nome "Nome do usuário"
+        String usuario "Email do usuário"
+        String senha "Senha (mínimo 8 caracteres)"
+        String foto "URL ou caminho da foto"
     }
 
-    CATEGORIA ||--o{ PRODUTO : "possui"
-    USUARIO ||--o{ PRODUTO : "cadastra"
+    VEICULO {
+        Long id PK "Chave primária"
+        String modelo "Modelo do veículo (5-100 caracteres)"
+        String placa "Placa do veículo"
+        int ano "Ano do veículo (5-10)"
+        String cor "Cor do veículo (não apenas numérico)"
+        BigDecimal velocidadeMedia "Velocidade média"
+    }
+
+    VIAGEM {
+        Long id PK "Chave primária"
+        String partida "Local de partida (10-1000 caracteres)"
+        String destino "Local de destino (10-1000 caracteres)"
+        BigDecimal distancia "Distância da viagem (positivo)"
+        BigDecimal tempoDeViagem "Tempo estimado da viagem (positivo)"
+    }
+
+    VIAGEM }o--|| USUARIO : motorista
+    VIAGEM }o--|| USUARIO : passageiro
+    VIAGEM }o--|| VEICULO : veiculo
+
 ```
 
 ---
@@ -131,46 +126,59 @@ erDiagram
 
 A API fornece os seguintes endpoints:
 
-**GET CATEGORIA**
+**GET EXERCICIOS**
 
 ```markdown
-GET / categoria - Recuperar uma lista de todas as categorias.
+GET /exercicio - Recuperar uma lista de todos exercicios.
 ```
 
 ```json
 [
-{
-	"id": 1,
-	"nome": "Categoria de Teste",
-	"descricao": "Categoria dedicada testes."
-}
+  {
+    "id": 1,
+    "nome": "Treino Ombro",
+    "carga": 20,
+    "repeticoes": 12,
+    "series": 3
+  },
+  {
+    "id": 3,
+    "nome": "Treino teste",
+    "carga": 20,
+    "repeticoes": 15,
+    "series": 3
+  }
 ]
 ```
 
-**POST CATEGORIAS**
+**POST EXERCICIOS**
 
 ```markdown
-POST /categoria - Registra uma nova categoria no aplicativo
+POST /exercicio - Registra um novo exercício no aplicativo
 ```
 
 ```json
 {
-	"nome": "Categoria de Teste",
-	"descricao": "Categoria dedicada testes."
+  "nome": "Treino Braço e perna",
+  "carga": 20,
+  "repeticoes": 12,
+  "series": 3
 }
 ```
 
-**UPDATE CATEGORIAS**
+**UPDATE EXERCICIOS**
 
 ```markdown
-PUT /categoria - Atualiza uma categoria existente
+PUT /exercicio - Atualiza um exercicio existente
 ```
 
 ```json
 {
-  "id": 1,
-  "nome": "Categoria de Teste 1",
-  "descricao": "Atualização categoria dedicada testes."
+  "id": 32,
+  "nome": "Treino teste",
+  "carga": 20,
+  "repeticoes": 15,
+  "series": 3
 }
 ```
 
@@ -180,7 +188,7 @@ PUT /categoria - Atualiza uma categoria existente
 
 | Item                          | Descrição        |
 | ----------------------------- | ---------------- |
-| **Servidor**                  | Render           |
+| **Servidor**                  | Tomcat           |
 | **Linguagem de programação**  | Java             |
 | **Framework**                 | Spring Framework |
 | **ORM**                       | Hibernate        |
