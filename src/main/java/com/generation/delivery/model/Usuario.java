@@ -29,7 +29,6 @@ public class Usuario {
     @Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
     private String senha;
 
-    @NotNull(message = "A data de nascimento é obrigatória")
     private LocalDate dataNascimento;
 
     @Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caracteres")
@@ -38,11 +37,11 @@ public class Usuario {
     private String telefone;
 
     private int tipo;
-    
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("usuario")
     private List<Produto> produtos;
-    
+
     public int getTipo() {
 		return tipo;
 	}
@@ -115,5 +114,5 @@ public class Usuario {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
-    
+
 }
